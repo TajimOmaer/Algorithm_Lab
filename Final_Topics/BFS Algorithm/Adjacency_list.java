@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BreadFS {
+public class BFS {
 
     static char[] c = {'A','B','C','D','E','F','G','S'};
     static int e[] = {2,2,2,2,2,2,3,3};
@@ -8,14 +8,14 @@ public class BreadFS {
                                       // adjacency list
 
     static int[] checked = new int[20];
-    static int[] que = new int[20];
+    static int[] queue = new int[20];
     static int first = 0, last = 0;
 
     public static void main(String[] args) {
         int n;
-        enq(7); // start from node 'S'
+        enqueue(7); // start from node 'S'
         while (first < last) {
-            n = dq();
+            n = dequeue();
             for (int i = 0; i < e[n]; i++) {
                 if (notChecked(list[n][i]) == 1)
                     enq(list[n][i]);
@@ -29,16 +29,16 @@ public class BreadFS {
         return 1;
     }
 
-    static void enq(int n) { // enqueue
+    static void enqueue(int n) { // enqueue
         checked[n] = 1;
-        que[last] = n;
+        queue[last] = n;
         last++;
     }
 
-    static int dq() { // dequeue
-        System.out.print(c[que[first]] + " ");
+    static int dequeue() { // dequeue
+        System.out.print(c[queue[first]] + " ");
         first++;
-        return que[first - 1];
+        return queue[first - 1];
     }
 }
 
